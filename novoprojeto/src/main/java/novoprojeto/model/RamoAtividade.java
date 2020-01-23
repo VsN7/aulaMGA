@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ramo atividade")
 public class RamoAtividade implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -14,6 +13,7 @@ public class RamoAtividade implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false, length = 80)
     private String descricao;
 
     public long getId() {

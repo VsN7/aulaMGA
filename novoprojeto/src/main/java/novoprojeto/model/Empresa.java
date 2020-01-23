@@ -6,27 +6,47 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "empresa")
 public class Empresa  implements Serializable {
 
-    @Column(name = "nome_fantasia")
-    private  Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "razao_social")
+
+    @Column(nullable = false, length = 80)
+    private  String nomeFantasia;
+
+    @Column(nullable = false, length = 120)
     private String razaoSocial;
 
+    @Column(nullable = false, length = 18)
     private String cnpj;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "data_fundacao")
+    @Temporal(TemporalType.DATE)
     private Date dataFundacao;
 
     @ManyToOne
-    @JoinColumn(name = "ramo_atividade_id")
+    @JoinColumn(nullable = false)
     private RamoAtividade ramoAtividade;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 30)
     private TipoEmpresa tipo;
+
+    public TipoEmpresa getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoEmpresa tipo) {
+        this.tipo = tipo;
+    }
+
+    public Empresa(String nomeFantasia) {
+        this.nomeFantasia = nomeFantasia;
+    }
+
+    public Empresa() {
+    }
 
     public Long getId() {
         return id;
@@ -50,6 +70,14 @@ public class Empresa  implements Serializable {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    public String getNomeFantasia() {
+        return nomeFantasia;
+    }
+
+    public void setNomeFantasia(String nomeFantasia) {
+        this.nomeFantasia = nomeFantasia;
     }
 
     public Date getDataFundacao() {
