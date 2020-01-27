@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Novo lançamento</title>
+
+    <h:outputStylesheet library="css" name="estilo.css"/>
+
+</h:head>
+<h:body>
+    <header>
+        <h:graphicImage class="imagemCabeca" library="imagens" name="webpublico.png"/>
+    </header>
+
+    <h2>Ajuda</h2>
+
+    <div id="conteudo">
+        <h:form>
+            <p>Esta é a ajuda da página de cadastro de empresas.</p>
+            <p>
+                <h:commandLink value="voltar" action="#{gestaoEmpresasBean.paginaGestao()}" />
+            </p>
+        </h:form>
+    </div>
+
+    <footer>
+        <p>Curso online JSF</p>
+    </footer>
+</h:body>
+</html>

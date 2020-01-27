@@ -2,8 +2,8 @@ package novoprojeto.repository;
 
 import novoprojeto.model.RamoAtividade;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -15,15 +15,10 @@ public class RamoAtividades implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Inject
-    private EntityManager manager;
+    private EntityManagerFactory manager;
 
     public  RamoAtividades(){
-
-    }
-
-    public RamoAtividades(EntityManager manager){
-        this.manager = manager;
+        manager = CustomEntityManagerFactory.getInstance().getFactory();
     }
 
     public List<RamoAtividade> pesquisar(String descricao){
@@ -37,7 +32,7 @@ public class RamoAtividades implements Serializable {
 
         criteriaQuery.where(criteriaBuilder.like(root.get("descricao"), descricao + "%"));
 
-        TypedQuery<RamoAtividade> query = manager.createQuery(criteriaQuery);
+        TypedQuery<RamoAtividade> query = manager.createEntityManager().createQuery(criteriaQuery);
 
         return query.getResultList();
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+ <h:head>
+  <meta charset="UTF-8" />
+  <title>Novo lançamento</title>
+
+  <h:outputStylesheet library="css" name="estilo.css"/>
+
+ </h:head>
+ <h:body>
+  <header>
+   <h:graphicImage class="imagemCabeca" library="imagens" name="webpublico.png"/>
+  </header>
+
+  <div id="conteudo">
+    <h:form>
+     <h:panelGrid columns="2">
+
+      <h:outputLabel value="Número: "/>
+      <h:outputText value="#{gestaoEmpresasBean.NUMERO}" />
+
+      <h:outputLabel/>
+      <h:commandButton value="Salvar" />
+
+     </h:panelGrid>
+
+    </h:form>
+  </div>
+
+  <footer>
+   <p>Curso online JSF</p>
+  </footer>
+ </h:body>
+</html>
